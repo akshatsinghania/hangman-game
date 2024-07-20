@@ -53,7 +53,7 @@ const wordList = [
   },
   {
     word: "science",
-    hint: "The systematic study of the structure and behaviour of the physical and  ",
+    hint: "The systematic study of the structure and behaviour of the physical and natural world ",
   },
   {
     word: "bicycle",
