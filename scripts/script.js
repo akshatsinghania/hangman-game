@@ -1,7 +1,13 @@
+const hangmanImage = document.querySelector(".hangman-box img");
 const wordDisplay = document.querySelector(".word-display");
+
+const guessesText = document.querySelector(".guesses-text b");
+
 const keyboardDiv = document.querySelector(".keyboard");
 
-let currentWord;
+let currentWord,
+  wrongGuessCount = 0;
+const maxGuesses = 6;
 
 const getRandomWord = () => {
   const { word, hint } = wordList[Math.floor(Math.random() * wordList.length)];
@@ -24,8 +30,10 @@ const initGame = (button, clickedLetter) => {
       }
     });
   } else {
-    console.log(clickedLetter, "is not exist on the word");
+    wrongGuessCount++;
+    hangmanImage.src = `images/hangman-${wrongGuessCount}.svg`;
   }
+  guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
 };
 
 for (let i = 97; i <= 122; i++) {
