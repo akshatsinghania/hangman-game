@@ -63,13 +63,16 @@ const initGame = (button, clickedLetter) => {
       }
     });
   } else {
-    //if clicked letter doesnot exist than update the wrong guess count and hangman image
     wrongGuessCount++;
+    hangmanImage.src = `images/hangman-${wrongGuessCount}.svg`;
+    guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
   }
   button.disabled = true;
 
+  const uniqueCorrectLetters = [...new Set(correctLetters)];
   if (wrongGuessCount === maxGuesses) return gameOver(false);
-  if (correctLetters.length === currentWord.length) return gameOver(true);
+  if (uniqueCorrectLetters.length === new Set(currentWord).size)
+    return gameOver(true);
 };
 
 for (let i = 97; i <= 122; i++) {
